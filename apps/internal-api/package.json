@@ -1,0 +1,32 @@
+{
+  "name": "@api/internal",
+  "version": "1.0.0",
+  "description": "",
+  "bin": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "generate-specs": "tsx src/index.ts --openapi > openapi.json"
+  },
+  "exports": [
+    {
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    }
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "dependencies": {
+    "@template-nextjs/db": "*",
+    "@hono/typebox-validator": "^0.3.2",
+    "@utils/numbers": "*",
+    "@lib/dao": "*",
+    "@oslojs/crypto": "^1.0.1",
+    "@oslojs/encoding": "^1.1.0",
+    "@scalar/hono-api-reference": "^0.5.172",
+    "@sinclair/typebox": "^0.34.16",
+    "hono": "^4.7.0",
+    "hono-openapi": "^0.4.6"
+  }
+}
