@@ -17,7 +17,7 @@ a place to put shared clients. Think of `apps` as actually deployed applications
 ## Usage
 
 - [ ] Replace all mentions of `template-nextjs` with your own project
-- [ ] Delete the LICENSE file. Optionally replace with a proprietary license.
+- [ ] Delete the LICENSE file. Optionally, replace with a proprietary license.
 - [ ] Rename .template.env to .env and fill out the remaining values
 
 There is a setup script in bin/setup.sh that simply installs mise if you want
@@ -26,5 +26,4 @@ an multilingual alternative to nvm.
 ## TODO
 
 - [ ] The components need to be refactored into lib
-- [ ] lib/typescript packages need to allow absolute paths with subpaths like `@lib/dao/user/auth.ts`
 - [ ] API errors should not throw HTTPException; rather, it should return c.text()

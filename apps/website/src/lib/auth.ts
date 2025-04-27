@@ -1,8 +1,8 @@
-import { authUser } from "@lib/dao"
+import { authUser } from "@lib/dao/user/auth"
 import { sha256 } from "@oslojs/crypto/sha2"
 import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from "@oslojs/encoding"
 import { type DB, db } from "@template-nextjs/db"
-import type { Insertable, Selectable } from "kysely"
+import type { Selectable } from "kysely"
 import { cookies } from "next/headers"
 import { cache } from "react"
 
