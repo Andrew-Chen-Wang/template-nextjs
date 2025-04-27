@@ -60,11 +60,9 @@ export const UUID4String = Type.String({
   errorMessage: "The string must be a valid UUID",
 })
 
-export const Nullable = <T extends TSchema>(schema: T) =>
-  Type.Unsafe<Static<T> | null>({
-    ...schema,
-    nullable: true,
-  })
+export const Nullable = <T extends TSchema>(T: T) => {
+  return Type.Union([T, Type.Null()])
+}
 
 export const EmptyObject = Type.Object({})
 
