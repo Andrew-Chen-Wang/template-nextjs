@@ -4,8 +4,8 @@ import { oauthGoogle } from "@website/lib/oauth"
 import { decodeIdToken } from "arctic"
 import { cookies } from "next/headers"
 
-import { crudUser } from "@lib/dao/user/crud"
 import { crudAccount } from "@lib/dao/account/crud"
+import { crudUser } from "@lib/dao/user/crud"
 import type { OAuth2Tokens } from "arctic"
 
 interface GoogleClaims {
