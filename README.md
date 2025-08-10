@@ -26,4 +26,3 @@ an multilingual alternative to nvm.
 ## TODO
 
 - [ ] The components need to be refactored into lib
-- [ ] API errors should not throw HTTPException; rather, it should return c.text()

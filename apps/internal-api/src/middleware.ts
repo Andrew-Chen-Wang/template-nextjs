@@ -1,14 +1,15 @@
-import { authUser } from "@lib/dao/user/auth"
+import type { DB } from "@template-nextjs/db"
+import { authUser } from "@lib/dao"
 import { sha256 } from "@oslojs/crypto/sha2"
 import { encodeHexLowerCase } from "@oslojs/encoding"
-import { type DB, db } from "@template-nextjs/db"
 import type { Context } from "hono"
 import { getCookie } from "hono/cookie"
 import { createMiddleware } from "hono/factory"
 import { HTTPException } from "hono/http-exception"
 import type { Selectable } from "kysely"
 import { ErrorCode } from "./utils/errors.enum.ts"
-import { throwError } from "./utils/http-exception.ts"
+import { throwHTTPException } from "./utils/http-exception.ts"
+import { db } from "@template-nextjs/db"
 
 type SessionUser = Pick<Selectable<DB["user"]>, "id" | "isAdmin" | "name" | "email">
 
@@ -22,17 +23,17 @@ export async function getSession(
 ) {
   const sessionToken = getCookie(c, "session")
   if (!sessionToken) {
-    throwError(401, ErrorCode.Unauthenticated, "Unauthenticated")
+    throwHTTPException(401, ErrorCode.Unauthenticated, "Unauthenticated")
   }
 
   const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(sessionToken)))
   try {
     const session = await authUser(db).validateSessionToken(sessionId)
-    if (!session) throwError(401, ErrorCode.Unauthenticated, "Unauthenticated")
+    if (!session) throwHTTPException(401, ErrorCode.Unauthenticated, "Unauthenticated")
     return session
   } catch {
     // Typically this means we're unable to connect to the database
-    throwError(503, ErrorCode.ServiceUnavailable, "Service unavailable")
+    throwHTTPException(503, ErrorCode.ServiceUnavailable, "Service unavailable")
   }
 }
 

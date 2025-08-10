@@ -5,6 +5,7 @@ import { describeRoute } from "hono-openapi"
 import { resolver } from "hono-openapi/typebox"
 import { authMiddleware } from "../middleware.ts"
 import { ErrorResponseT } from "../utils/common.serializer.ts"
+import { throwInternalServerError } from "../utils/http-exception.ts"
 
 const app = new Hono().use(authMiddleware).delete(
   "/me/delete",
@@ -27,7 +28,7 @@ const app = new Hono().use(authMiddleware).delete(
 
     const result = await crudUser(db).deleteUser(user.id)
     if (!result) {
-      return c.text("Failed to delete user", 500)
+      return throwInternalServerError(c, "Failed to delete user")
     }
 
     return c.body(null, 204)
