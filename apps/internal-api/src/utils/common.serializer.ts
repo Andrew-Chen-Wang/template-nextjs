@@ -7,7 +7,7 @@ import {
   Type,
 } from "@sinclair/typebox"
 import { DefaultErrorFunction, SetErrorFunction } from "@sinclair/typebox/errors"
-import { ErrorResponseT } from "./errors/error.serializer"
+import { ErrorSchemaResponse } from "./errors/error.serializer"
 
 export type RefineFunction<T extends TSchema> = (value: StaticEncode<T>) => boolean
 export type RefineOptions = { message?: string }
@@ -39,13 +39,6 @@ export function Refine<T extends TSchema, E = StaticEncode<T>>(
 
 // Common Types
 
-export const PositiveIntegerString = Type.String({
-  $id: "PositiveIntegerString",
-  type: "string",
-  pattern: "^[1-9]\\d*$",
-  errorMessage: "The string must be a valid positive integer",
-})
-
 export const UUID7String = Type.String({
   $id: "UUID7String",
   type: "string",
@@ -64,9 +57,13 @@ export const Nullable = <T extends TSchema>(T: T) => {
   return Type.Union([T, Type.Null()])
 }
 
+export const IdParamT = Type.Object({
+  id: UUID7String,
+})
+
 export const EmptyObject = Type.Object({})
 
-export { ErrorResponseT }
+export { ErrorSchemaResponse }
 
 // Typebox Helpers
 SetErrorFunction((parameter) =>

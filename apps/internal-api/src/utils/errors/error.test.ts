@@ -1,9 +1,9 @@
 import { HTTPException } from "hono/http-exception"
 import { describe, expect, it } from "vitest"
-import { ErrorCode } from "../errors.enum.ts"
-import { throwBadRequest, throwForbidden, throwNotFound } from "../http-exception.ts"
-import { createErrorObject, createErrorResponse } from "./error.serializer.ts"
-import type { ErrorDetail } from "./error.types.ts"
+import { ErrorCode } from "../errors.enum"
+import { throwHTTPException } from "../http-exception"
+import { createErrorObject, createErrorResponse } from "./error.serializer"
+import type { ErrorDetail } from "./error.types"
 
 interface ParsedErrorResponse {
   error: ErrorDetail
@@ -112,10 +112,10 @@ describe("Error utilities", () => {
     })
   })
 
-  describe("throwError helpers", () => {
+  describe("throwHTTPException helpers", () => {
     it("throwBadRequest should throw HTTPException with status 400", () => {
       try {
-        throwBadRequest("Invalid input")
+        throwHTTPException(400, ErrorCode.BadRequest, "Invalid input")
         expect.fail("Should have thrown an exception")
       } catch (error) {
         if (!(error instanceof HTTPException)) {
@@ -130,7 +130,7 @@ describe("Error utilities", () => {
 
     it("throwForbidden should allow custom error code", () => {
       try {
-        throwForbidden("Insufficient permissions", ErrorCode.InsufficientPermissions)
+        throwHTTPException(403, ErrorCode.InsufficientPermissions, "Insufficient permissions")
         expect.fail("Should have thrown an exception")
       } catch (error) {
         if (!(error instanceof HTTPException)) {
@@ -145,7 +145,7 @@ describe("Error utilities", () => {
 
     it("throwNotFound should allow details", () => {
       try {
-        throwNotFound("User not found", ErrorCode.ResourceNotFound, {
+        throwHTTPException(404, ErrorCode.ResourceNotFound, "User not found", {
           target: "user",
           details: [{ code: "not_found", message: "User with ID 123 not found" }],
         })

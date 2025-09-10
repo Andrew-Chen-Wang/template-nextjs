@@ -1,7 +1,8 @@
-import type { DB } from "@template-nextjs/db"
 import { authUser } from "@lib/dao"
 import { sha256 } from "@oslojs/crypto/sha2"
 import { encodeHexLowerCase } from "@oslojs/encoding"
+import type { DB } from "@template-nextjs/db"
+import { db } from "@template-nextjs/db"
 import type { Context } from "hono"
 import { getCookie } from "hono/cookie"
 import { createMiddleware } from "hono/factory"
@@ -9,7 +10,6 @@ import { HTTPException } from "hono/http-exception"
 import type { Selectable } from "kysely"
 import { ErrorCode } from "./utils/errors.enum.ts"
 import { throwHTTPException } from "./utils/http-exception.ts"
-import { db } from "@template-nextjs/db"
 
 type SessionUser = Pick<Selectable<DB["user"]>, "id" | "isAdmin" | "name" | "email">
 

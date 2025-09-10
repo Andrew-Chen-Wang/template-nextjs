@@ -65,6 +65,15 @@ export function throwBadRequest(
   return throwError(c, 400, code, message, options)
 }
 
+export function throwUnauthenticated(
+  c: Context,
+  message = "Bad request",
+  code: ErrorCode = ErrorCode.Unauthenticated,
+  options?: Parameters<typeof throwError>[4],
+) {
+  return throwError(c, 401, code, message, options)
+}
+
 export function throwForbidden(
   c: Context,
   message = "Forbidden",

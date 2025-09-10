@@ -1,36 +1,31 @@
+import { Type } from "@sinclair/typebox"
 /**
  * TypeBox schemas for standardized error responses
  * Following the OData v4 JSON spec format as specified in the Hono error code rule
  * See Microsoft API guidelines for how this works
  * https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md#710-response-formats
  */
-import { Type } from "@sinclair/typebox"
-import { ErrorCode } from "../errors.enum.ts"
-import type { ErrorDetail } from "./error.types.ts"
+import { ErrorCode } from "../errors.enum"
+import type { ErrorDetail } from "./error.types"
 
-export const InnerErrorT = Type.Recursive((self) =>
-  Type.Object(
-    {
-      code: Type.String(),
-      innererror: Type.Optional(self),
-    },
-    { additionalProperties: true },
-  ),
-)
+export const InnerErrorT = Type.Object({
+  code: Type.String(),
+  innererror: Type.Optional(Type.Ref("#/components/schemas/InnerErrorT")),
+})
 
-export const ErrorObjectT = Type.Recursive((self) =>
-  Type.Object({
-    code: Type.Union([Type.Enum(ErrorCode), Type.String()]),
-    message: Type.String(),
-    target: Type.Optional(Type.String()),
-    details: Type.Optional(Type.Array(self)),
-    innererror: Type.Optional(InnerErrorT),
-  }),
-)
+export const ErrorObjectT = Type.Object({
+  code: Type.Union([Type.Enum(ErrorCode), Type.String()]),
+  message: Type.String(),
+  target: Type.Optional(Type.String()),
+  details: Type.Optional(Type.Array(Type.Ref("#/components/schemas/ErrorObjectT"))),
+  innererror: Type.Optional(Type.Ref("#/components/schemas/InnerErrorT")),
+})
 
 export const ErrorResponseT = Type.Object({
-  error: ErrorObjectT,
+  error: Type.Ref("#/components/schemas/ErrorObjectT"),
 })
+
+export const ErrorSchemaResponse = { $ref: "#/components/schemas/ErrorResponseT" }
 
 /**
  * Helper function to create a standard error response object
