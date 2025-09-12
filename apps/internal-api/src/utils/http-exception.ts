@@ -1,7 +1,7 @@
 import type { Context } from "hono"
 import { HTTPException } from "hono/http-exception"
 import { ErrorCode } from "./errors.enum"
-import { createErrorObject } from "./errors/error.serializer"
+import { createErrorObject, createErrorResponse } from "./errors/error.serializer"
 import type { ErrorDetail } from "./errors/error.types"
 
 type HTTPStatusCode = 400 | 401 | 403 | 404 | 405 | 409 | 422 | 429 | 500 | 503
@@ -51,7 +51,7 @@ export function throwError(
     }
   },
 ) {
-  return c.json(createErrorObject(code, message, options), { status })
+  return c.json(createErrorResponse(code, message, options), { status })
 }
 
 // Common error throwing helpers
