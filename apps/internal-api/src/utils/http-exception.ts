@@ -1,8 +1,8 @@
 import type { Context } from "hono"
 import { HTTPException } from "hono/http-exception"
-import { ErrorCode } from "./errors.enum"
 import { createErrorObject, createErrorResponse } from "./errors/error.serializer"
 import type { ErrorDetail } from "./errors/error.types"
+import { ErrorCode } from "./errors.enum"
 
 type HTTPStatusCode = 400 | 401 | 403 | 404 | 405 | 409 | 422 | 429 | 500 | 503
 

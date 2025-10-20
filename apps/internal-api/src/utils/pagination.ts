@@ -32,7 +32,7 @@ export function decodeCursor(cursor: string | null): DecodedCursor {
       tokens = JSON.parse(Buffer.from(cursor, "base64url").toString("utf-8")) as
         | Cursor
         | UnknownCursor
-    } catch (e) {
+    } catch {
       throw new Error("Invalid cursor")
     }
     if (!validateUUID(tokens.o)) {

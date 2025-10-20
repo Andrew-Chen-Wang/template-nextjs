@@ -1,12 +1,11 @@
+import { crudAccount } from "@lib/dao/account/crud"
+import { crudUser } from "@lib/dao/user/crud"
 import { db } from "@template-nextjs/db"
 import { createSession, generateSessionToken, setSessionTokenCookie } from "@website/lib/auth"
 import { oauthGoogle } from "@website/lib/oauth"
+import type { OAuth2Tokens } from "arctic"
 import { decodeIdToken } from "arctic"
 import { cookies } from "next/headers"
-
-import { crudAccount } from "@lib/dao/account/crud"
-import { crudUser } from "@lib/dao/user/crud"
-import type { OAuth2Tokens } from "arctic"
 
 interface GoogleClaims {
   sub: string
@@ -42,7 +41,7 @@ export async function GET(request: Request): Promise<Response> {
   let tokens: OAuth2Tokens
   try {
     tokens = await oauthGoogle.validateAuthorizationCode(code, codeVerifier)
-  } catch (e) {
+  } catch {
     // Invalid code or client credentials
     return new Response(null, {
       status: 400,

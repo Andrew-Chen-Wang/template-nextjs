@@ -9,7 +9,6 @@ const getPrefix = (): string => {
 }
 
 export default defineConfig({
-  // @ts-ignore
   kysely: db,
   migrations: {
     migrationFolder: "migrations",

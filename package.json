@@ -20,21 +20,19 @@
     "lib/typescript/ui/*"
   ],
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@eslint/js": "^9.18.0",
+    "@biomejs/biome": "2.2.6",
+    "@eslint/js": "^9.38.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9.18.0",
-    "jiti": "^2.4.2",
-    "lefthook": "^1.10.3",
-    "tsx": "^4.19.1",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.19.1",
-    "vitest": "^3.0.7"
+    "eslint": "^9.38.0",
+    "jiti": "^2.6.1",
+    "lefthook": "^1.13.6",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.1",
+    "vitest": "^3.2.4"
   },
-  "dependencies": {
-    "@hono/standard-validator": "^0.1.5"
-  },
+  "dependencies": {},
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "^4.40.0"
   }

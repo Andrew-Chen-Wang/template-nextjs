@@ -1,17 +1,17 @@
 "use client"
 
-import Link from "next/link"
-import { useState } from "react"
-
 import { Icons } from "@website/components/icons.tsx"
 import { Button } from "@website/components/ui/button.tsx"
 import { Checkbox } from "@website/components/ui/checkbox"
 import { Label } from "@website/components/ui/label"
+import Link from "next/link"
+import { useId, useState } from "react"
 import { oauthRedirect } from "./actions.ts"
 
 export function SignInForm() {
   const [signInError, setSignInError] = useState<string | null>(null)
-  const [agreedToTerms, setAgreedToTerms] = useState(false)
+  const [agreedToTerms, setAgreedToTerms] = useState<boolean>(false)
+  const termsId = useId()
 
   const googleSubmit = async () => {
     if (!agreedToTerms) {
@@ -30,13 +30,13 @@ export function SignInForm() {
 
       <div className="flex items-center flex-row gap-x-2 mb-4">
         <Checkbox
-          id="terms"
+          id={termsId}
           checked={agreedToTerms}
           onCheckedChange={(checked) => {
             setAgreedToTerms(checked as boolean)
           }}
         />
-        <Label htmlFor="terms" className="text-sm">
+        <Label htmlFor={termsId} className="text-sm">
           <p>
             I agree to the{" "}
             <Link href="/legal/community-terms" className="text-blue-600 hover:underline">

@@ -40,7 +40,9 @@ export default app
 export type AppType = typeof routes
 
 if (process.argv.includes("--openapi")) {
-  const specs = generateSpecs(app, spec).then((specs) => {
-    console.log(JSON.stringify(specs, null, 2))
-  })
+  generateSpecs(app, spec)
+    .then((specs) => {
+      console.log(JSON.stringify(specs, null, 2))
+    })
+    .catch(console.error)
 }
