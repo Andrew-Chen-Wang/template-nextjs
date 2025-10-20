@@ -1,6 +1,7 @@
 import type { DB } from "@template-nextjs/db"
-import { isValidPositiveInteger } from "@utils/numbers"
 import type { ComparisonOperatorExpression, SelectQueryBuilder } from "kysely"
+// import { isValidPositiveInteger } from "@utils/numbers"
+import { validate as validateUUID } from "uuid"
 
 // biome-ignore lint/suspicious/noExplicitAny: any is expected
 export function isValidDate(date: any): boolean {
@@ -34,10 +35,14 @@ export function decodeCursor(cursor: string | null): DecodedCursor {
     } catch (e) {
       throw new Error("Invalid cursor")
     }
-    if (!isValidPositiveInteger(tokens.o, true)) {
+    if (!validateUUID(tokens.o)) {
       throw new Error("Invalid offset")
     }
-    if (!tokens.p) {
+    // In case you use a numerical primary key, here's the code
+    // if (!isValidPositiveInteger(tokens.o, true)) {
+    //   throw new Error("Invalid offset")
+    // }
+    if (!tokens.p || !validateUUID(tokens.p)) {
       throw new Error("Invalid position")
     }
     if (tokens.t === "date") {
