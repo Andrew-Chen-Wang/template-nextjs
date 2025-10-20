@@ -5,6 +5,7 @@ import {
   TypeScriptSerializer,
   transform,
 } from "kysely-codegen"
+
 // Default configuration: https://github.com/RobinBlomberg/kysely-codegen/releases/tag/0.18.0
 
 class Serializer extends TypeScriptSerializer {

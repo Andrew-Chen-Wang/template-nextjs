@@ -1,10 +1,10 @@
 import { apiReference } from "@scalar/hono-api-reference"
 import { Hono } from "hono"
-import { generateSpecs, openAPISpecs } from "hono-typebox-openapi"
+import { generateSpecs, type OpenApiSpecsOptions, openAPISpecs } from "hono-typebox-openapi"
 import { ErrorObjectT, ErrorResponseT, InnerErrorT } from "./utils/errors/error.serializer.ts"
 import v1 from "./v1"
 
-const spec = {
+const spec: OpenApiSpecsOptions = {
   documentation: {
     info: {
       title: "Internal API",
@@ -24,6 +24,7 @@ const spec = {
 
 const app = new Hono().basePath("/api")
 if (process.env.NODE_ENV === "development") {
+  // @ts-expect-error
   app.get("/openapi", openAPISpecs(app, spec))
   app.get(
     "/docs",

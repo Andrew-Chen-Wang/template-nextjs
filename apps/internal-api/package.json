@@ -18,13 +18,12 @@
   "license": "ISC",
   "private": true,
   "dependencies": {
-    "@hono/standard-validator": "^0.1.5",
     "@lib/dao": "*",
     "@oslojs/crypto": "^1.0.1",
     "@oslojs/encoding": "^1.1.0",
     "@scalar/hono-api-reference": "^0.5.172",
     "typebox": "^1.0.41",
-    "hono-typebox-openapi": "^0.0.1",
+    "hono-typebox-openapi": "^0.0.3",
     "@template-nextjs/db": "*",
     "@utils/numbers": "*",
     "hono": "^4.7.0"

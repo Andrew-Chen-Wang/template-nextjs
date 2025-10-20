@@ -2,6 +2,7 @@ import { crudUser } from "@lib/dao/user/crud"
 import { db } from "@template-nextjs/db"
 import { Hono } from "hono"
 import { describeRoute } from "hono-typebox-openapi"
+import { resolver } from "hono-typebox-openapi/typebox"
 import { authMiddleware } from "../middleware.ts"
 import { ErrorSchemaResponse } from "../utils/common.serializer.ts"
 import { throwInternalServerError } from "../utils/http-exception.ts"
@@ -17,7 +18,7 @@ const app = new Hono().use(authMiddleware).delete(
         description: "",
         content: {
           "application/json": {
-            schema: ErrorSchemaResponse,
+            schema: resolver(ErrorSchemaResponse),
           },
         },
       },
