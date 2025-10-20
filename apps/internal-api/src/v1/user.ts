@@ -1,7 +1,7 @@
 import { crudUser } from "@lib/dao/user/crud"
 import { db } from "@template-nextjs/db"
 import { Hono } from "hono"
-import { describeRoute } from "hono-openapi"
+import { describeRoute } from "hono-typebox-openapi"
 import { authMiddleware } from "../middleware.ts"
 import { ErrorSchemaResponse } from "../utils/common.serializer.ts"
 import { throwInternalServerError } from "../utils/http-exception.ts"

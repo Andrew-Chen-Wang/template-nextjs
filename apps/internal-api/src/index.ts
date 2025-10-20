@@ -1,10 +1,10 @@
 import { apiReference } from "@scalar/hono-api-reference"
 import { Hono } from "hono"
-import { type GenerateSpecOptions, generateSpecs, openAPIRouteHandler } from "hono-openapi"
+import { generateSpecs, openAPISpecs } from "hono-typebox-openapi"
 import { ErrorObjectT, ErrorResponseT, InnerErrorT } from "./utils/errors/error.serializer.ts"
 import v1 from "./v1"
 
-const spec: Partial<GenerateSpecOptions> = {
+const spec = {
   documentation: {
     info: {
       title: "Internal API",
@@ -24,7 +24,7 @@ const spec: Partial<GenerateSpecOptions> = {
 
 const app = new Hono().basePath("/api")
 if (process.env.NODE_ENV === "development") {
-  app.get("/openapi", openAPIRouteHandler(app, spec))
+  app.get("/openapi", openAPISpecs(app, spec))
   app.get(
     "/docs",
     apiReference({
