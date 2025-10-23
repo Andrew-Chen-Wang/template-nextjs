@@ -27,7 +27,7 @@
     "rules": {
       "recommended": true
     },
-    "includes": ["!apps/website/lib/client/**"]
+    "includes": ["!apps/website/services/client/**"]
   },
   "javascript": {
     "formatter": {
