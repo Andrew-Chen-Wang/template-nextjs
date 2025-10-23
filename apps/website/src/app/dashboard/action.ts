@@ -1,10 +1,6 @@
 "use server"
 
-import {
-  deleteSessionTokenCookie,
-  getCurrentSession,
-  invalidateSession,
-} from "@website/lib/auth.ts"
+import { deleteSessionTokenCookie, getCurrentSession, invalidateSession } from "@website/lib/auth"
 import { redirect } from "next/navigation"
 
 interface ActionResult {

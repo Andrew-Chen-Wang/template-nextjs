@@ -1,6 +1,6 @@
 "use server"
 
-import { getCurrentSession } from "@website/lib/auth.ts"
+import { getCurrentSession } from "@website/lib/auth"
 import { headers } from "next/headers"
 import { redirect } from "next/navigation"
 import { Dashboard } from "./dashboard.tsx"

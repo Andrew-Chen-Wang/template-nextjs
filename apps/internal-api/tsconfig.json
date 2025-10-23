@@ -13,7 +13,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "allowImportingTsExtensions": true,
+    "allowImportingTsExtensions": false,
     "paths": {
       "@api/internal/*": ["./src/*"],
       "@template-nextjs/db/*": ["../../packages/db/src/*"],

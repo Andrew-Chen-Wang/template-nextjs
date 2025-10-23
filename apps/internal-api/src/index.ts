@@ -1,7 +1,7 @@
 import { apiReference } from "@scalar/hono-api-reference"
 import { Hono } from "hono"
 import { generateSpecs, type OpenApiSpecsOptions, openAPISpecs } from "hono-typebox-openapi"
-import { ErrorObjectT, ErrorResponseT, InnerErrorT } from "./utils/errors/error.serializer.ts"
+import { ErrorObjectT, ErrorResponseT, InnerErrorT } from "./utils/errors/error.serializer"
 import v1 from "./v1"
 
 const spec: OpenApiSpecsOptions = {

@@ -1,16 +1,17 @@
 "use client"
 
-import { logout } from "@website/app/dashboard/action.ts"
-import { Button } from "@website/components/ui/button.tsx"
-import { client } from "@website/lib/client.ts"
+import { useMutation } from "@tanstack/react-query"
+import { logout } from "@website/app/dashboard/action"
+import { Button } from "@website/components/ui/button"
+import { deleteApiV1UserMeDeleteMutation } from "@website/services/client/@tanstack/react-query.gen"
 
 export function Dashboard() {
-  async function handleDeleteUser() {
-    const r = await client.api.v1.user.me.delete.$delete()
-    if (r.ok) {
+  const deleteUserMutation = useMutation({
+    ...deleteApiV1UserMeDeleteMutation(),
+    onSettled: async () => {
       await logout()
-    }
-  }
+    },
+  })
 
   async function handleLogout() {
     await logout()
@@ -27,7 +28,7 @@ export function Dashboard() {
       </Button>
       <Button
         onClick={() => {
-          handleDeleteUser().catch(console.error)
+          void deleteUserMutation.mutateAsync({})
         }}
       >
         Delete User

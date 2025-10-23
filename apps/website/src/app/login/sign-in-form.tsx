@@ -6,7 +6,7 @@ import { Checkbox } from "@website/components/ui/checkbox"
 import { Label } from "@website/components/ui/label"
 import Link from "next/link"
 import { useId, useState } from "react"
-import { oauthRedirect } from "./actions.ts"
+import { oauthRedirect } from "./actions"
 
 export function SignInForm() {
   const [signInError, setSignInError] = useState<string | null>(null)

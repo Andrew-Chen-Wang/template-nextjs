@@ -1,4 +1,4 @@
-import { oauthGoogle } from "@website/lib/oauth.ts"
+import { oauthGoogle } from "@website/lib/oauth"
 import { generateCodeVerifier, generateState } from "arctic"
 import { cookies } from "next/headers"
 

@@ -26,7 +26,8 @@
     "enabled": true,
     "rules": {
       "recommended": true
-    }
+    },
+    "includes": ["!apps/website/lib/client/**"]
   },
   "javascript": {
     "formatter": {

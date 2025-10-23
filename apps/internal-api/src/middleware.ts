@@ -8,8 +8,8 @@ import { getCookie } from "hono/cookie"
 import { createMiddleware } from "hono/factory"
 import { HTTPException } from "hono/http-exception"
 import type { Selectable } from "kysely"
-import { ErrorCode } from "./utils/errors.enum.ts"
-import { throwHTTPException } from "./utils/http-exception.ts"
+import { ErrorCode } from "./utils/errors.enum"
+import { throwHTTPException } from "./utils/http-exception"
 
 type SessionUser = Pick<Selectable<DB["user"]>, "id" | "isAdmin" | "name" | "email">
 

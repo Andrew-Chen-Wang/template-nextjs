@@ -18,6 +18,7 @@ export default tseslint.config(
       "**/.config/**",
       "apps/website/postcss.config.js",
       "apps/website/next.config.ts",
+      "apps/website/src/services/client/**",
     ],
   },
   {

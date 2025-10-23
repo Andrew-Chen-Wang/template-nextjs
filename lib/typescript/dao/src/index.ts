@@ -1,5 +1,5 @@
-import { crudAccount } from "./account/crud.ts"
-import { authUser } from "./user/auth.ts"
-import { crudUser } from "./user/crud.ts"
+import { crudAccount } from "./account/crud"
+import { authUser } from "./user/auth"
+import { crudUser } from "./user/crud"
 
 export { authUser, crudUser, crudAccount }

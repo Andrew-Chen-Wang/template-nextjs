@@ -3,16 +3,21 @@ import { db } from "@template-nextjs/db"
 import { Hono } from "hono"
 import { describeRoute } from "hono-typebox-openapi"
 import { resolver } from "hono-typebox-openapi/typebox"
-import { authMiddleware } from "../middleware.ts"
-import { ErrorSchemaResponse } from "../utils/common.serializer.ts"
-import { throwInternalServerError } from "../utils/http-exception.ts"
+import { authMiddleware } from "../middleware"
+import { EmptyObject, ErrorSchemaResponse } from "../utils/common.serializer"
+import { throwInternalServerError } from "../utils/http-exception"
 
 const app = new Hono().use(authMiddleware).delete(
   "/me/delete",
   describeRoute({
     responses: {
-      204: {
+      200: {
         description: "User successfully deleted",
+        content: {
+          "application/json": {
+            schema: resolver(EmptyObject),
+          },
+        },
       },
       500: {
         description: "",
@@ -32,7 +37,7 @@ const app = new Hono().use(authMiddleware).delete(
       return throwInternalServerError(c, "Failed to delete user")
     }
 
-    return c.body(null, 204)
+    return c.json({}, 200)
   },
 )
 
