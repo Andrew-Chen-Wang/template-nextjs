@@ -1,4 +1,4 @@
-import { Button } from "@website/components/ui/button.tsx"
+import { Button } from "@website/components/ui/button"
 import { getCurrentSession } from "@website/lib/auth"
 import Link from "next/link"
 import { redirect } from "next/navigation"

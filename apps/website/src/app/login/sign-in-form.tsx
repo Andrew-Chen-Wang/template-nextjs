@@ -1,7 +1,7 @@
 "use client"
 
-import { Icons } from "@website/components/icons.tsx"
-import { Button } from "@website/components/ui/button.tsx"
+import { Icons } from "@website/components/icons"
+import { Button } from "@website/components/ui/button"
 import { Checkbox } from "@website/components/ui/checkbox"
 import { Label } from "@website/components/ui/label"
 import Link from "next/link"
