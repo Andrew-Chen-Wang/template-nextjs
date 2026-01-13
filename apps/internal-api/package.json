@@ -22,13 +22,13 @@
     "@oslojs/crypto": "^1.0.1",
     "@oslojs/encoding": "^1.1.0",
     "@scalar/hono-api-reference": "^0.5.172",
-    "typebox": "^1.0.41",
-    "hono-typebox-openapi": "^0.0.3",
     "@template-nextjs/db": "*",
     "@utils/numbers": "*",
-    "hono": "^4.7.0"
+    "hono": "^4.7.0",
+    "hono-typebox-openapi": "^0.0.3",
+    "typebox": "^1.0.41"
   },
   "devDependencies": {
-    "@hey-api/openapi-ts": "0.82.5"
+    "@hey-api/openapi-ts": "^0.90.3"
   }
 }
