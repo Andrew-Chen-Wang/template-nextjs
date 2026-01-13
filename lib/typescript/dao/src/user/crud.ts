@@ -1,14 +1,15 @@
 import type { DB } from "@template-nextjs/db"
 import type { Insertable, Kysely, Selectable } from "kysely"
 import { v7 } from "uuid"
+import { PartialBy } from "../utils/types"
 
 export function crudUser(db: Kysely<DB>) {
-  async function createUser(data: Insertable<DB["user"]>): Promise<Selectable<DB["user"]>> {
-    if (!data.id) {
-      data.id = v7()
-    }
+  async function createUser(
+    data: PartialBy<Insertable<DB["user"]>, "id">,
+  ): Promise<Selectable<DB["user"]>> {
+    const values = { id: data.id ?? v7(), ...data }
     return await db.transaction().execute(async (tx) => {
-      return await tx.insertInto("user").values(data).returningAll().executeTakeFirstOrThrow()
+      return await tx.insertInto("user").values(values).returningAll().executeTakeFirstOrThrow()
     })
   }
 

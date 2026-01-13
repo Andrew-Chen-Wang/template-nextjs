@@ -76,13 +76,11 @@ export async function GET(request: Request): Promise<Response> {
 
   let user = await db.selectFrom("user").where("email", "=", email).selectAll().executeTakeFirst()
   user ??= await crudUser(db).createUser({
-    id: "",
     name,
     email,
     image,
   })
-  await crudAccount(db).create({
-    id: "",
+  await crudAccount(db).createAccount({
     userId: user.id,
     provider: "google",
     providerAccountId: googleUserId,
