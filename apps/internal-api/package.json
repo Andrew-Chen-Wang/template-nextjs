@@ -25,7 +25,7 @@
     "@template-nextjs/db": "*",
     "@utils/numbers": "*",
     "hono": "^4.7.0",
-    "hono-typebox-openapi": "^0.0.3",
+    "hono-typebox-openapi": "^0.0.4",
     "typebox": "^1.0.41"
   },
   "devDependencies": {
