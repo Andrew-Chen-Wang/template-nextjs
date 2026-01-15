@@ -4,7 +4,7 @@ globs: apps/internal-api/src/**/*.serializer.ts
 alwaysApply: false
 ---
 - When creating a schema, the name of them should be camel case. The format should be apiRouteSchemaQuery where apiRoute is the url path (including the base URL but excluding the version such as v1), "Schema" is static, and "Query" defines what the schema is designated for. Your options are only: SchemaQuery, SchemaParam, SchemaResponse, SchemaRequest. "QuerySchema" is completely invalid
-- Any `id` type (like `user_id` or some kind of primary/foreign key) should use PositiveIntegerString from `utils/common.serializer.ts`
+- Any `id` type (like `user_id` or some kind of primary/foreign key) should use UUID7String from `utils/common.serializer.ts`
 - Any type that includes is a type or null should use Nullable from `utils/common.serializer.ts`
 - Refrain from adding examples to the schema
 - Limit/offset are number types with a minimum of 0 for each and multipleOf 1
