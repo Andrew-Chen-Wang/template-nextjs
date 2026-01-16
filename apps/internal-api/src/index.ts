@@ -24,7 +24,6 @@ const spec: OpenApiSpecsOptions = {
 
 const app = new Hono().basePath("/api")
 if (process.env.NODE_ENV === "development") {
-  // @ts-expect-error
   app.get("/openapi", openAPISpecs(app, spec))
   app.get(
     "/docs",
