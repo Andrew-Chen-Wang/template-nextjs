@@ -1,17 +1,9 @@
 services:
-#  redis:
-#    image: redis:latest
-#    container_name: redis
-#    ports:
-#      - "6379:6379"
-#    volumes:
-#      - redis-data:/data
-
   postgres:
-    container_name: postgres
-    image: postgres:17
+    container_name: template_nextjs_postgres
+    image: postgres:18
     ports:
-      - "5432:5432"
+      - "25271:5432"
     volumes:
       - postgres:/var/lib/postgresql/data
     environment:
@@ -19,8 +11,16 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=main
 
+  #valkey:
+  #  image: valkey:latest
+  #  container_name: template_nextjs_valkey
+  #  ports:
+  #    - "41013:6379"
+  #  volumes:
+  #    - valkey-data:/data
+
 volumes:
-#  redis-data:
-#    driver: local
   postgres:
     driver: local
+  #valkey-data:
+  #  driver: local
