@@ -16,10 +16,9 @@
   },
   "dependencies": {
     "@template-nextjs/db": "workspace:*",
-    "kysely": "^0.27.5"
+    "kysely": "^0.28.15"
   },
   "devDependencies": {
-    "@faker-js/faker": "^9.4.0",
-    "kysely-ctl": "^0.9.0"
+    "kysely-ctl": "^0.20.0"
   }
 }

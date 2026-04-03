@@ -17,8 +17,8 @@
   "scripts": {},
   "dependencies": {
     "@template-nextjs/db": "workspace:*",
-    "kysely": "^0.27.5",
-    "uuid": "^11.1.0"
+    "kysely": "^0.28.15",
+    "uuid": "^13.0.0"
   },
   "config": {}
 }
