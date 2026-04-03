@@ -17,7 +17,6 @@ export default defineConfig({
       // validator: {
       //   request: "zod",
       // },
-      asClass: false,
     },
   ],
 })

@@ -9,7 +9,7 @@ import type { DB } from "./types.ts"
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-dotenv.config({ path: `${__dirname}/../../../apps/website/.env` })
+dotenv.config({ path: `${__dirname}/../../../apps/website/.env`, quiet: true })
 
 const dialect = new PostgresDialect({
   pool: new pg.Pool({

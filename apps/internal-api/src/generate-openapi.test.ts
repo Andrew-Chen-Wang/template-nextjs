@@ -2,7 +2,6 @@ import { exec } from "node:child_process"
 import { mkdtemp, rm, writeFile } from "node:fs/promises"
 import { tmpdir } from "node:os"
 import { dirname, join } from "node:path"
-import { fileURLToPath } from "node:url"
 import { promisify } from "node:util"
 import { createClient } from "@hey-api/openapi-ts"
 import { describe, expect, it } from "vitest"
@@ -16,7 +15,7 @@ describe("OpenAPI Generation with hey-api", () => {
 
     try {
       // Generate OpenAPI specs using the command line
-      const currentDir = dirname(fileURLToPath(import.meta.url))
+      const currentDir = dirname(import.meta.dirname)
       const { stdout } = await execAsync("npx tsx src/index.ts --openapi", {
         cwd: currentDir,
       })
