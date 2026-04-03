@@ -38,6 +38,7 @@
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vercel/config": "^0.1.0",
     "tailwindcss": "^4.2.2",
     "typescript": "^6.0.2"
   },
