@@ -1,22 +1,22 @@
 {
   "name": "@api/internal",
   "version": "1.0.0",
+  "private": true,
   "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
   "bin": "src/index.ts",
   "type": "module",
-  "scripts": {
-    "generate-specs": "tsx src/index.ts --openapi > openapi.json"
-  },
   "exports": [
     {
       "import": "./src/index.ts",
       "require": "./src/index.ts"
     }
   ],
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "private": true,
+  "scripts": {
+    "generate-specs": "tsx src/index.ts --openapi > openapi.json"
+  },
   "dependencies": {
     "@lib/dao": "workspace:*",
     "@oslojs/crypto": "^1.0.1",
@@ -24,9 +24,11 @@
     "@scalar/hono-api-reference": "^0.5.172",
     "@template-nextjs/db": "workspace:*",
     "@utils/numbers": "workspace:*",
-    "hono": "^4.7.0",
+    "hono": "^4.12.10",
     "hono-typebox-openapi": "^0.0.4",
-    "typebox": "^1.0.41"
+    "kysely": "^0.27.6",
+    "typebox": "^1.0.41",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@hey-api/openapi-ts": "^0.90.3"

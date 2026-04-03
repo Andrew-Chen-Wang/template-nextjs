@@ -3,7 +3,6 @@ import type { ComparisonOperatorExpression, SelectQueryBuilder } from "kysely"
 // import { isValidPositiveInteger } from "@utils/numbers"
 import { validate as validateUUID } from "uuid"
 
-// biome-ignore lint/suspicious/noExplicitAny: any is expected
 export function isValidDate(date: any): boolean {
   return !!date && Object.prototype.toString.call(date) === "[object Date]" && !Number.isNaN(date)
 }

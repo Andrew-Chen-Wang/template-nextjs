@@ -10,21 +10,8 @@ env:
   NPM_CONFIG_FUND: false
 
 jobs:
-  lint-biome:
-    name: (Biome) Lint and Format Check
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout current branch
-        uses: actions/checkout@v5
-      - name: Setup Biome
-        uses: biomejs/setup-biome@v2
-      - name: Check formatting with Biome
-        # Do not use --changed. Previously, if we didn't lint everything,
-        # some bugs would slip through due to sheer nature of git diff.
-        run: biome ci --no-errors-on-unmatched .
-
-  lint:
-    name: (eslint) TypeScript Lint Check
+  format:
+    name: (oxfmt) Format Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -33,17 +20,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: '24.14.0'
-          cache: 'pnpm'
-
+          node-version: "24.14.0"
+          cache: "pnpm"
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Check typescript-eslint
-        run: npx eslint --config .config/eslint.config.mjs .
+      - name: Check formatting with Oxfmt
+        run: pnpm run format --check
 
   build:
-    name: Website Build and Test Full Repo
+    name: Website Build, Lint, and Test Full Repo
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -52,8 +37,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: '24.14.0'
-          cache: 'pnpm'
+          node-version: "24.14.0"
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -61,6 +46,9 @@ jobs:
       - name: Build
         working-directory: apps/website
         run: pnpm run build
+
+      - name: Lint
+        run: pnpm run lint
 
       - name: Test
         run: pnpm run test

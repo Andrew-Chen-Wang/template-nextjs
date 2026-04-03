@@ -3,3 +3,8 @@ packages:
   - "packages/*"
   - "lib/typescript/*"
   - "lib/typescript/utils/*"
+  - "lib/typescript/ui/*"
+allowBuilds:
+  esbuild: true
+  lefthook: true
+  sharp: true

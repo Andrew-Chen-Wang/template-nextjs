@@ -1,23 +1,24 @@
 {
   "name": "@lib/dao",
   "version": "1.0.0",
+  "private": true,
   "description": "Common database access modules for reusability and clean testing",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
   "type": "module",
   "main": "index.js",
-  "config": {},
-  "scripts": {},
   "exports": [
     {
       "import": "./src/index.ts",
       "require": "./src/index.ts"
     }
   ],
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "private": true,
+  "scripts": {},
   "dependencies": {
     "@template-nextjs/db": "workspace:*",
+    "kysely": "^0.27.5",
     "uuid": "^11.1.0"
-  }
+  },
+  "config": {}
 }

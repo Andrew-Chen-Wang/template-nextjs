@@ -66,22 +66,14 @@ export function fetchResource(db: Kysely<DB>) {
     id: string,
     fields: T,
   ): Promise<Pick<Selectable<DB["resource"]>, T[number]> | undefined> {
-    return await db
-      .selectFrom("resource")
-      .select(fields)
-      .where("id", "=", id)
-      .executeTakeFirst()
+    return await db.selectFrom("resource").select(fields).where("id", "=", id).executeTakeFirst()
   }
 
   async function getMany<T extends (keyof DB["resource"])[]>(
     userId: string,
     fields: T,
   ): Promise<Pick<Selectable<DB["resource"]>, T[number]>[]> {
-    return await db
-      .selectFrom("resource")
-      .select(fields)
-      .where("userId", "=", userId)
-      .execute()
+    return await db.selectFrom("resource").select(fields).where("userId", "=", userId).execute()
   }
 
   return { getOne, getMany }

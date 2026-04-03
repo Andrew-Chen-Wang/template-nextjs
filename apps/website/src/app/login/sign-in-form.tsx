@@ -10,7 +10,7 @@ import { oauthRedirect } from "./actions"
 
 export function SignInForm() {
   const [signInError, setSignInError] = useState<string | null>(null)
-  const [agreedToTerms, setAgreedToTerms] = useState<boolean>(false)
+  const [agreedToTerms, setAgreedToTerms] = useState(false)
   const termsId = useId()
 
   const googleSubmit = async () => {

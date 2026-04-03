@@ -11,27 +11,29 @@ The frontend calls the backend via a type-safe generated client. The backend (Ho
 
 ```bash
 cd apps/website
-npm run openapi
+pnpm run openapi
 ```
 
 This runs `openapi-ts` using the config at `.config/openapi-ts.config.ts`, which:
+
 1. Fetches the OpenAPI spec from `http://localhost:3000/api/openapi`
 2. Generates output to `apps/website/src/services/client/`
-3. Runs `npm run lint` to format the generated files
+3. Runs `pnpm run lint` to format the generated files
 
 ### What Gets Generated
 
-| File | Purpose |
-|------|---------|
-| `types.gen.ts` | Request/response TypeScript types for every endpoint |
-| `sdk.gen.ts` | SDK functions for calling each endpoint |
-| `client.gen.ts` | Pre-configured fetch client (base URL: `http://localhost:3000`) |
-| `@tanstack/react-query.gen.ts` | `queryOptions` and `mutationOptions` factories for React Query |
-| `transformers.gen.ts` | Response transformers (e.g., date string to Date) |
+| File                           | Purpose                                                         |
+| ------------------------------ | --------------------------------------------------------------- |
+| `types.gen.ts`                 | Request/response TypeScript types for every endpoint            |
+| `sdk.gen.ts`                   | SDK functions for calling each endpoint                         |
+| `client.gen.ts`                | Pre-configured fetch client (base URL: `http://localhost:3000`) |
+| `@tanstack/react-query.gen.ts` | `queryOptions` and `mutationOptions` factories for React Query  |
+| `transformers.gen.ts`          | Response transformers (e.g., date string to Date)               |
 
 ### When to Regenerate
 
-Run `npm run openapi` in `apps/website` whenever:
+Run `pnpm run openapi` in `apps/website` whenever:
+
 - A new API route is added or removed
 - Request/response schemas change
 - Path or query parameters change
@@ -41,6 +43,7 @@ Run `npm run openapi` in `apps/website` whenever:
 ### Config Reference
 
 The hey-api config is at `.config/openapi-ts.config.ts`. Key settings:
+
 - **Plugins**: `@hey-api/client-fetch`, `@tanstack/react-query` (with `queryKeys` and `mutationOptions`), `@hey-api/typescript`, `@hey-api/transformers`, `@hey-api/sdk`
 - **Excluded operations**: Some streaming chat endpoints are excluded from generation (see `parser.filters.operations`)
 
@@ -54,9 +57,7 @@ All examples use TanStack Query v5. Import hooks from `@website/services/client/
 "use client"
 
 import { useQuery } from "@tanstack/react-query"
-import {
-  getApiV1CompanyJobPostingOptions,
-} from "@website/services/client/@tanstack/react-query.gen"
+import { getApiV1CompanyJobPostingOptions } from "@website/services/client/@tanstack/react-query.gen"
 
 export function JobsList({ companyId }: { companyId: string }) {
   const { data, isLoading } = useQuery({
@@ -134,6 +135,7 @@ export type DeleteApiV1FriendByIdDeleteSentInviteData = {
 ```
 
 Usage:
+
 ```tsx
 deleteMutation.mutate({ path: { id: friendId } })
 ```

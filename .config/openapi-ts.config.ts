@@ -5,7 +5,6 @@ export default defineConfig({
   output: {
     indexFile: false,
     path: "apps/website/src/services/client",
-    lint: "biome",
   },
   plugins: [
     "@hey-api/client-fetch",

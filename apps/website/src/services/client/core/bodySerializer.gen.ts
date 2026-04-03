@@ -6,10 +6,18 @@ export type QuerySerializer = (query: Record<string, unknown>) => string
 
 export type BodySerializer = (body: any) => any
 
-export interface QuerySerializerOptions {
+type QuerySerializerOptionsObject = {
   allowReserved?: boolean
-  array?: SerializerOptions<ArrayStyle>
-  object?: SerializerOptions<ObjectStyle>
+  array?: Partial<SerializerOptions<ArrayStyle>>
+  object?: Partial<SerializerOptions<ObjectStyle>>
+}
+
+export type QuerySerializerOptions = QuerySerializerOptionsObject & {
+  /**
+   * Per-parameter serialization overrides. When provided, these settings
+   * override the global array/object settings for specific parameter names.
+   */
+  parameters?: Record<string, QuerySerializerOptionsObject>
 }
 
 const serializeFormDataPair = (data: FormData, key: string, value: unknown): void => {
@@ -41,9 +49,7 @@ export const formDataBodySerializer = {
         return
       }
       if (Array.isArray(value)) {
-        value.forEach((v) => {
-          serializeFormDataPair(data, key, v)
-        })
+        value.forEach((v) => serializeFormDataPair(data, key, v))
       } else {
         serializeFormDataPair(data, key, value)
       }
@@ -67,9 +73,7 @@ export const urlSearchParamsBodySerializer = {
         return
       }
       if (Array.isArray(value)) {
-        value.forEach((v) => {
-          serializeUrlSearchParamsPair(data, key, v)
-        })
+        value.forEach((v) => serializeUrlSearchParamsPair(data, key, v))
       } else {
         serializeUrlSearchParamsPair(data, key, value)
       }

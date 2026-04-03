@@ -6,7 +6,7 @@ This package provides a database client for the project. This is also where code
 
 To generate types for Kysely, run
 
-`npm run db-codegen`
+`pnpm run db-codegen`
 
 ## .env
 

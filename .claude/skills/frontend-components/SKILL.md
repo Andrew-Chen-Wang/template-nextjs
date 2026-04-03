@@ -9,54 +9,54 @@ Always check for and use existing components before creating new HTML elements o
 
 ### UI Components (`@website/components/ui/`)
 
-| Component | Use instead of |
-|-----------|---------------|
-| `Button` | `<button>` — supports `variant` (`default`, `ghost`, `outline`, `destructive`, `link`, `secondary`) and `size` (`default`, `sm`, `lg`, `icon`) |
-| `Input` | `<input type="text">` |
-| `Textarea` | `<textarea>` |
-| `Checkbox` | `<input type="checkbox">` |
-| `RadioGroup` + `RadioGroupItem` | `<input type="radio">` |
-| `Select` + `SelectTrigger` + `SelectContent` + `SelectItem` | `<select>` |
-| `Label` | `<label>` |
-| `Card` + `CardHeader` + `CardTitle` + `CardContent` + `CardFooter` | Card-like containers |
-| `Badge` | Status tags, labels, chips |
-| `Table` + `TableHeader` + `TableBody` + `TableRow` + `TableCell` | `<table>` |
-| `Dialog` + `DialogTrigger` + `DialogContent` | Modal dialogs |
-| `Sheet` + `SheetTrigger` + `SheetContent` | Side panels / drawers |
-| `Tabs` + `TabsList` + `TabsTrigger` + `TabsContent` | Tab navigation |
-| `ScrollArea` | Scrollable containers |
-| `Slider` | Range inputs |
-| `Switch` | Toggle switches |
-| `Tooltip` + `TooltipTrigger` + `TooltipContent` | Hover tooltips |
-| `Skeleton` | Loading placeholders |
-| `Spinner` | Loading spinners |
-| `LoadingButton` | Button with loading state |
-| `Separator` | `<hr>` |
-| `Alert` + `AlertTitle` + `AlertDescription` | Alert banners |
-| `Accordion` | Collapsible sections |
-| `DropdownMenu` | Context menus / action menus |
-| `Popover` | Floating content |
-| `HoverCard` | Rich hover previews |
-| `Calendar` | Date pickers |
-| `Pagination` | Page navigation |
-| `Progress` | Progress bars |
-| `Form` | React Hook Form wrapper (with `FormField`, `FormItem`, `FormLabel`, `FormControl`, `FormMessage`) |
+| Component                                                          | Use instead of                                                                                                                                 |
+| ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Button`                                                           | `<button>` — supports `variant` (`default`, `ghost`, `outline`, `destructive`, `link`, `secondary`) and `size` (`default`, `sm`, `lg`, `icon`) |
+| `Input`                                                            | `<input type="text">`                                                                                                                          |
+| `Textarea`                                                         | `<textarea>`                                                                                                                                   |
+| `Checkbox`                                                         | `<input type="checkbox">`                                                                                                                      |
+| `RadioGroup` + `RadioGroupItem`                                    | `<input type="radio">`                                                                                                                         |
+| `Select` + `SelectTrigger` + `SelectContent` + `SelectItem`        | `<select>`                                                                                                                                     |
+| `Label`                                                            | `<label>`                                                                                                                                      |
+| `Card` + `CardHeader` + `CardTitle` + `CardContent` + `CardFooter` | Card-like containers                                                                                                                           |
+| `Badge`                                                            | Status tags, labels, chips                                                                                                                     |
+| `Table` + `TableHeader` + `TableBody` + `TableRow` + `TableCell`   | `<table>`                                                                                                                                      |
+| `Dialog` + `DialogTrigger` + `DialogContent`                       | Modal dialogs                                                                                                                                  |
+| `Sheet` + `SheetTrigger` + `SheetContent`                          | Side panels / drawers                                                                                                                          |
+| `Tabs` + `TabsList` + `TabsTrigger` + `TabsContent`                | Tab navigation                                                                                                                                 |
+| `ScrollArea`                                                       | Scrollable containers                                                                                                                          |
+| `Slider`                                                           | Range inputs                                                                                                                                   |
+| `Switch`                                                           | Toggle switches                                                                                                                                |
+| `Tooltip` + `TooltipTrigger` + `TooltipContent`                    | Hover tooltips                                                                                                                                 |
+| `Skeleton`                                                         | Loading placeholders                                                                                                                           |
+| `Spinner`                                                          | Loading spinners                                                                                                                               |
+| `LoadingButton`                                                    | Button with loading state                                                                                                                      |
+| `Separator`                                                        | `<hr>`                                                                                                                                         |
+| `Alert` + `AlertTitle` + `AlertDescription`                        | Alert banners                                                                                                                                  |
+| `Accordion`                                                        | Collapsible sections                                                                                                                           |
+| `DropdownMenu`                                                     | Context menus / action menus                                                                                                                   |
+| `Popover`                                                          | Floating content                                                                                                                               |
+| `HoverCard`                                                        | Rich hover previews                                                                                                                            |
+| `Calendar`                                                         | Date pickers                                                                                                                                   |
+| `Pagination`                                                       | Page navigation                                                                                                                                |
+| `Progress`                                                         | Progress bars                                                                                                                                  |
+| `Form`                                                             | React Hook Form wrapper (with `FormField`, `FormItem`, `FormLabel`, `FormControl`, `FormMessage`)                                              |
 
 ### AI Chat Components (`@website/components/ai-elements/`)
 
 For any AI chat interface, use these existing components:
 
-| Component | Purpose |
-|-----------|---------|
-| `Conversation` + `ConversationContent` + `ConversationScrollButton` + `ConversationEmptyState` | Chat message container with auto-scroll |
-| `Message` + `MessageContent` | Individual chat message bubble |
-| `Response` | Markdown-rendered AI response text |
-| `PromptInput` + `PromptInputBody` + `PromptInputTextarea` + `PromptInputToolbar` + `PromptInputSubmit` | Chat input area |
-| `PromptInputMicrophone` | Voice input button |
-| `Loader` | Streaming/thinking indicator |
-| `Tool` + `ToolHeader` + `ToolContent` + `ToolOutput` | Tool call display |
-| `Reasoning` + `ReasoningTrigger` + `ReasoningContent` | Expandable reasoning display |
-| `Suggestion` + `Suggestions` | Quick reply suggestion chips |
+| Component                                                                                              | Purpose                                 |
+| ------------------------------------------------------------------------------------------------------ | --------------------------------------- |
+| `Conversation` + `ConversationContent` + `ConversationScrollButton` + `ConversationEmptyState`         | Chat message container with auto-scroll |
+| `Message` + `MessageContent`                                                                           | Individual chat message bubble          |
+| `Response`                                                                                             | Markdown-rendered AI response text      |
+| `PromptInput` + `PromptInputBody` + `PromptInputTextarea` + `PromptInputToolbar` + `PromptInputSubmit` | Chat input area                         |
+| `PromptInputMicrophone`                                                                                | Voice input button                      |
+| `Loader`                                                                                               | Streaming/thinking indicator            |
+| `Tool` + `ToolHeader` + `ToolContent` + `ToolOutput`                                                   | Tool call display                       |
+| `Reasoning` + `ReasoningTrigger` + `ReasoningContent`                                                  | Expandable reasoning display            |
+| `Suggestion` + `Suggestions`                                                                           | Quick reply suggestion chips            |
 
 ### Toast Notifications
 
@@ -95,6 +95,5 @@ Use `lucide-react` for icons. Import individual icons:
 
 ```tsx
 import { ChevronRight, Plus, Trash2 } from "lucide-react"
-
-<ChevronRight className="h-4 w-4" />
+;<ChevronRight className="h-4 w-4" />
 ```
