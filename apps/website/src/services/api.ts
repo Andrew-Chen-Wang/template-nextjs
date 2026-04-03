@@ -19,4 +19,4 @@ export const queryClient = new QueryClient({
   },
 })
 
-client.setConfig({ baseUrl: process.env.NEXT_PUBLIC_HOST_URL })
+client.setConfig({ baseUrl: process.env.NEXT_PUBLIC_API_URL })

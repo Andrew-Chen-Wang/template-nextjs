@@ -15,9 +15,11 @@
     }
   ],
   "scripts": {
+    "dev": "tsx src/index.ts",
     "generate-specs": "tsx src/index.ts --openapi > openapi.json"
   },
   "dependencies": {
+    "@hono/node-server": "^1.19.12",
     "@lib/dao": "workspace:*",
     "@oslojs/crypto": "^1.0.1",
     "@oslojs/encoding": "^1.1.0",
@@ -31,6 +33,7 @@
     "uuid": "^13.0.0"
   },
   "devDependencies": {
-    "@hey-api/openapi-ts": "^0.95.0"
+    "@hey-api/openapi-ts": "^0.95.0",
+    "@vercel/config": "^0.1.0"
   }
 }

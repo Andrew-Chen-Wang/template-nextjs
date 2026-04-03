@@ -11,10 +11,15 @@ The easiest deployment method is via Vercel.
 The API for Hono is connected via Next, but it can be refactored into a separately
 deployed app on a different domain.
 
-Think of `lib` as a place to put custom, shared cook. Think of `packages` as
+Think of `lib` as a place to put custom, shared code. Think of `packages` as
 a place to put shared clients. Think of `apps` as actually deployed applications.
 
 ## Usage
+
+```shell
+pnpm run --dir apps/internal-api dev
+pnpm run --dir apps/website dev
+```
 
 - [ ] Replace all mentions of `template-nextjs` with your own project
 - [ ] Delete the LICENSE file. Optionally, replace with a proprietary license.

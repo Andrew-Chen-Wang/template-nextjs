@@ -1,7 +1,7 @@
 import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const requestHeaders = new Headers(request.headers)
   requestHeaders.set("x-pathname", request.nextUrl.pathname)
 
@@ -16,6 +16,7 @@ export function middleware(request: NextRequest) {
       // Only extend cookie expiration on GET requests since we can be sure
       // a new session wasn't set when handling the request.
       response.cookies.set("session", token, {
+        domain: `.${process.env.NEXT_PUBLIC_HOSTNAME}`,
         path: "/",
         maxAge: 60 * 60 * 24 * 30,
         sameSite: "lax",
