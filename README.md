@@ -21,7 +21,7 @@ a place to put shared clients. Think of `apps` as actually deployed applications
 - [ ] Rename .template.env to .env and fill out the remaining values
 
 There is a setup script in bin/setup.sh that simply installs mise if you want
-an multilingual alternative to nvm.
+a multilingual alternative to nvm.
 
 ## TODO
 

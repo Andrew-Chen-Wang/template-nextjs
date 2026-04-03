@@ -7,6 +7,7 @@ on:
 
 env:
   NEXT_TELEMETRY_DISABLED: 1
+  NPM_CONFIG_FUND: false
 
 jobs:
   lint-biome:
@@ -27,15 +28,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: '24.7.0'
-          cache: 'npm'
+          node-version: '24.14.0'
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Check typescript-eslint
         run: npx eslint --config .config/eslint.config.mjs .
@@ -45,18 +47,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: '24.7.0'
-          cache: 'npm'
+          node-version: '24.14.0'
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build
         working-directory: apps/website
-        run: npm run build
+        run: pnpm run build
 
       - name: Test
-        run: npm run test
+        run: pnpm run test

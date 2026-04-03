@@ -17,7 +17,7 @@
   "license": "ISC",
   "private": true,
   "dependencies": {
-    "@template-nextjs/db": "*",
+    "@template-nextjs/db": "workspace:*",
     "uuid": "^11.1.0"
   }
 }
