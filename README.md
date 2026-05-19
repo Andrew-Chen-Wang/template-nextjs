@@ -27,7 +27,3 @@ pnpm run --dir apps/website dev
 
 There is a setup script in bin/setup.sh that simply installs mise if you want
 a multilingual alternative to nvm.
-
-## TODO
-
-- [ ] The components need to be refactored into lib
