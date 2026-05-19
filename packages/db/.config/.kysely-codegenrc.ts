@@ -45,7 +45,7 @@ class Serializer extends TypeScriptSerializer {
 }
 
 const config = {
-  envFile: `${__dirname}/../../../apps/website/.env`,
+  envFile: `${__dirname}/../../../.env`,
   logLevel: "warn",
   outFile: `${__dirname}/../src/types.ts`,
   url: "env(DATABASE_URL)",
