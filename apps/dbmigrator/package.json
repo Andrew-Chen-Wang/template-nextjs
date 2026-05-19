@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@template-nextjs/db": "workspace:*",
-    "kysely": "^0.28.15"
+    "kysely": "catalog:"
   },
   "devDependencies": {
-    "kysely-ctl": "^0.20.0"
+    "kysely-ctl": "^0.21.0"
   }
 }

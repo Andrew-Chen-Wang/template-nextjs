@@ -1,5 +1,5 @@
 import { type TSchema, Type } from "typebox"
-import Format from "typebox/format"
+import { Format } from "typebox/format"
 import { ErrorSchemaResponse } from "./errors/error.serializer"
 
 // Common Types

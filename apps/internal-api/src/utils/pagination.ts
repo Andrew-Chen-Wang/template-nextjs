@@ -180,11 +180,11 @@ export async function cursorPaginate<
 
   try {
     const rawResults = await query
-      .$if(!!position, (query) =>
+      .$if(!!position, (innerQuery) =>
         // biome-ignore lint/style/noNonNullAssertion: We've validated the position
-        query.where((qb) => qb.ref(positionColumn as string), positionOperator, position!),
+        innerQuery.where((qb) => qb.ref(positionColumn as string), positionOperator, position!),
       )
-      .$if(!!offset, (query) => query.offset(offset))
+      .$if(!!offset, (innerQuery) => innerQuery.offset(offset))
       // Fetch one more than the page size to determine if there's a next page
       .limit(pageSize + 1)
       .execute()
@@ -224,7 +224,7 @@ export async function cursorOffsetPaginate<
 
   try {
     const rawResults = await query
-      .$if(!!offset, (query) => query.offset(offset))
+      .$if(!!offset, (innerQuery) => innerQuery.offset(offset))
       // Fetch one more than the page size to determine if there's a next page
       .limit(pageSize + 1)
       .execute()

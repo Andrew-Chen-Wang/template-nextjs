@@ -8,3 +8,14 @@ allowBuilds:
   esbuild: true
   lefthook: true
   sharp: true
+catalog:
+  "@hey-api/openapi-ts": ^0.97.2
+  "@oslojs/crypto": ^1.0.1
+  "@oslojs/encoding": ^1.1.0
+  "@types/node": ^25.9.1
+  "@types/react": ^19.2.15
+  "@types/react-dom": ^19.2.3
+  "@vercel/config": ^0.5.0
+  kysely: ^0.29.2
+  typescript: ^6.0.3
+  uuid: ^14.0.0

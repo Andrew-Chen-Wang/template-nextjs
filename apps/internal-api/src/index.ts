@@ -51,22 +51,23 @@ if (process.argv.includes("--openapi")) {
     .catch(console.error)
 }
 
-if (process.env.NODE_ENV === "development") {
-  function getPrivateIP() {
-    const interfaces = networkInterfaces()
-    for (const interfaceName in interfaces) {
-      const addresses = interfaces[interfaceName]
-      if (addresses) {
-        for (const addr of addresses) {
-          // Filter for IPv4 and non-internal loopback addresses
-          if (addr.family === "IPv4" && !addr.internal) {
-            return addr.address
-          }
+function getPrivateIP() {
+  const interfaces = networkInterfaces()
+  for (const interfaceName in interfaces) {
+    const addresses = interfaces[interfaceName]
+    if (addresses) {
+      for (const addr of addresses) {
+        // Filter for IPv4 and non-internal loopback addresses
+        if (addr.family === "IPv4" && !addr.internal) {
+          return addr.address
         }
       }
     }
-    return "127.0.0.1" // Fallback to localhost
   }
+  return "127.0.0.1" // Fallback to localhost
+}
+
+if (process.env.NODE_ENV === "development") {
   serve(
     {
       fetch: app.fetch,

@@ -19,21 +19,21 @@
     "generate-specs": "tsx src/index.ts --openapi > openapi.json"
   },
   "dependencies": {
-    "@hono/node-server": "^1.19.12",
+    "@hono/node-server": "^2.0.3",
     "@lib/dao": "workspace:*",
-    "@oslojs/crypto": "^1.0.1",
-    "@oslojs/encoding": "^1.1.0",
-    "@scalar/hono-api-reference": "^0.10.6",
+    "@oslojs/crypto": "catalog:",
+    "@oslojs/encoding": "catalog:",
+    "@scalar/hono-api-reference": "^0.10.16",
     "@template-nextjs/db": "workspace:*",
     "@utils/numbers": "workspace:*",
-    "hono": "^4.12.10",
+    "hono": "^4.12.21",
     "hono-typebox-openapi": "^0.0.5",
-    "kysely": "^0.28.15",
-    "typebox": "^1.1.14",
-    "uuid": "^13.0.0"
+    "kysely": "catalog:",
+    "typebox": "^1.1.38",
+    "uuid": "catalog:"
   },
   "devDependencies": {
-    "@hey-api/openapi-ts": "^0.95.0",
-    "@vercel/config": "^0.1.0"
+    "@hey-api/openapi-ts": "catalog:",
+    "@vercel/config": "catalog:"
   }
 }

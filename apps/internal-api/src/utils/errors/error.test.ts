@@ -9,6 +9,15 @@ interface ParsedErrorResponse {
   error: ErrorDetail
 }
 
+const captureThrown = (fn: () => void): unknown => {
+  try {
+    fn()
+  } catch (error) {
+    return error
+  }
+  return undefined
+}
+
 describe("Error utilities", () => {
   describe("createErrorResponse", () => {
     it("should create a basic error response", () => {
@@ -114,53 +123,47 @@ describe("Error utilities", () => {
 
   describe("throwHTTPException helpers", () => {
     it("throwBadRequest should throw HTTPException with status 400", () => {
-      try {
-        throwHTTPException(400, ErrorCode.BadRequest, "Invalid input")
-        expect.fail("Should have thrown an exception")
-      } catch (error) {
-        if (!(error instanceof HTTPException)) {
-          throw new Error("Expected HTTPException", { cause: error })
-        }
-        expect(error.status).toBe(400)
-        const message = JSON.parse(error.message) as ParsedErrorResponse
-        expect(message.error.code).toBe(ErrorCode.BadRequest)
-        expect(message.error.message).toBe("Invalid input")
-      }
+      const thrown = captureThrown(() =>
+        throwHTTPException(400, ErrorCode.BadRequest, "Invalid input"),
+      )
+
+      expect(thrown).toBeInstanceOf(HTTPException)
+      const exc = thrown as HTTPException
+      expect(exc.status).toBe(400)
+      const message = JSON.parse(exc.message) as ParsedErrorResponse
+      expect(message.error.code).toBe(ErrorCode.BadRequest)
+      expect(message.error.message).toBe("Invalid input")
     })
 
     it("throwForbidden should allow custom error code", () => {
-      try {
-        throwHTTPException(403, ErrorCode.InsufficientPermissions, "Insufficient permissions")
-        expect.fail("Should have thrown an exception")
-      } catch (error) {
-        if (!(error instanceof HTTPException)) {
-          throw new Error("Expected HTTPException", { cause: error })
-        }
-        expect(error.status).toBe(403)
-        const message = JSON.parse(error.message) as ParsedErrorResponse
-        expect(message.error.code).toBe(ErrorCode.InsufficientPermissions)
-        expect(message.error.message).toBe("Insufficient permissions")
-      }
+      const thrown = captureThrown(() =>
+        throwHTTPException(403, ErrorCode.InsufficientPermissions, "Insufficient permissions"),
+      )
+
+      expect(thrown).toBeInstanceOf(HTTPException)
+      const exc = thrown as HTTPException
+      expect(exc.status).toBe(403)
+      const message = JSON.parse(exc.message) as ParsedErrorResponse
+      expect(message.error.code).toBe(ErrorCode.InsufficientPermissions)
+      expect(message.error.message).toBe("Insufficient permissions")
     })
 
     it("throwNotFound should allow details", () => {
-      try {
+      const thrown = captureThrown(() =>
         throwHTTPException(404, ErrorCode.ResourceNotFound, "User not found", {
           target: "user",
           details: [{ code: "not_found", message: "User with ID 123 not found" }],
-        })
-        expect.fail("Should have thrown an exception")
-      } catch (error) {
-        if (!(error instanceof HTTPException)) {
-          throw new Error("Expected HTTPException", { cause: error })
-        }
-        expect(error.status).toBe(404)
-        const message = JSON.parse(error.message) as ParsedErrorResponse
-        expect(message.error.code).toBe(ErrorCode.ResourceNotFound)
-        expect(message.error.target).toBe("user")
-        expect(message.error.details).toHaveLength(1)
-        expect(message.error.details?.[0].message).toContain("User with ID 123")
-      }
+        }),
+      )
+
+      expect(thrown).toBeInstanceOf(HTTPException)
+      const exc = thrown as HTTPException
+      expect(exc.status).toBe(404)
+      const message = JSON.parse(exc.message) as ParsedErrorResponse
+      expect(message.error.code).toBe(ErrorCode.ResourceNotFound)
+      expect(message.error.target).toBe("user")
+      expect(message.error.details).toHaveLength(1)
+      expect(message.error.details?.[0].message).toContain("User with ID 123")
     })
   })
 })

@@ -1,3 +1,3 @@
-import { isValidPositiveInteger } from "./validate.ts"
+import { isValidPositiveInteger } from "./validate"
 
 export { isValidPositiveInteger }

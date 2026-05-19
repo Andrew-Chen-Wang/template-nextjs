@@ -27,14 +27,17 @@ export async function getSession(
   }
 
   const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(sessionToken)))
+
+  let session: Awaited<ReturnType<ReturnType<typeof authUser>["validateSessionToken"]>>
   try {
-    const session = await authUser(db).validateSessionToken(sessionId)
-    if (!session) throwHTTPException(401, ErrorCode.Unauthenticated, "Unauthenticated")
-    return session
+    session = await authUser(db).validateSessionToken(sessionId)
   } catch {
     // Typically this means we're unable to connect to the database
     throwHTTPException(503, ErrorCode.ServiceUnavailable, "Service unavailable")
   }
+
+  if (!session) throwHTTPException(401, ErrorCode.Unauthenticated, "Unauthenticated")
+  return session
 }
 
 export const authMiddleware = createMiddleware<{

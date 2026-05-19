@@ -2,17 +2,17 @@ import path from "node:path"
 import { fileURLToPath } from "node:url"
 import dotenv from "dotenv"
 import { CamelCasePlugin, Kysely, PostgresDialect } from "kysely"
-import pg from "pg"
-import type { DB } from "./types.ts"
+import { Pool } from "pg"
+import type { DB } from "./types"
 
 // Re-define __dirname since we are using JS when generating OpenAPI specs in apps/internal-api
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const currentFilename = fileURLToPath(import.meta.url)
+const currentDir = path.dirname(currentFilename)
 
-dotenv.config({ path: `${__dirname}/../../../apps/website/.env`, quiet: true })
+dotenv.config({ path: `${currentDir}/../../../apps/website/.env`, quiet: true })
 
 const dialect = new PostgresDialect({
-  pool: new pg.Pool({
+  pool: new Pool({
     connectionString: process.env.DATABASE_URL,
     max: 10,
   }),

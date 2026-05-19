@@ -11,7 +11,7 @@ pnpm run dev --workspace=website
 pnpm test
 
 # Run a single test file
-npx vitest run path/to/file.test.ts --config .config/vitest.config.mts
+pnpm dlx vitest run path/to/file.test.ts --config .config/vitest.config.mts
 
 # Lint and format
 pnpm run format        # Oxfmt format with .config/oxfmt.config.ts
@@ -23,7 +23,7 @@ pnpm run migrate:latest --workspace=dbmigrator     # Run migrations
 pnpm run db-codegen --workspace=@queryme/db        # Generate Kysely types
 
 # Create new migration
-cd apps/dbmigrator/src && npx kysely migrate:make <name>
+cd apps/dbmigrator/src && pnpm dlx kysely migrate:make <name>
 
 # Generate OpenAPI client (requires dev server running)
 pnpm run openapi --workspace=website

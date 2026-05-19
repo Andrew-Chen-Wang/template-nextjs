@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { isValidPositiveInteger } from "./validate.ts"
+import { isValidPositiveInteger } from "./validate"
 
 describe("isValidPositiveInteger", () => {
   it("should return false for null or undefined", () => {
