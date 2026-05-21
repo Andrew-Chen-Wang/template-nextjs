@@ -6,6 +6,10 @@ pre-commit:
   commands:
     oxlint:
       glob: "*.{js,ts,jsx,tsx}"
+      exclude:
+        - "apps/website/next.config.ts"
+        - "apps/website/postcss.config.js"
+        - "apps/website/src/services/client/**"
       run: pnpm exec oxlint -c .config/oxlint.config.mts --disable-nested-config --type-aware --type-check --fix {staged_files}
       stage_fixed: true
     oxfmt:
