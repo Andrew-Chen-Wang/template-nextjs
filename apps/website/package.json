@@ -37,6 +37,7 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vercel/config": "catalog:",
+    "babel-plugin-react-compiler": "catalog:",
     "typescript": "catalog:"
   },
   "optionalDependencies": {
