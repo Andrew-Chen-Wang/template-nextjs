@@ -1,5 +1,6 @@
 import { type TSchema, Type } from "typebox"
 import { Format } from "typebox/format"
+import { Clone } from "typebox/value"
 import { ErrorSchemaResponse } from "./errors/error.serializer"
 
 // Common Types
@@ -19,7 +20,7 @@ export const UUID4String = Type.String({
 })
 
 export const Nullable = <T extends TSchema>(T: T) => {
-  return Type.Union([T, Type.Null()])
+  return Type.Union([Clone(T), Type.Null()])
 }
 
 export const IdParamT = Type.Object({
