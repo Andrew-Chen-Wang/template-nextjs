@@ -15,7 +15,7 @@
     }
   ],
   "scripts": {
-    "dev": "tsx src/index.ts",
+    "dev": "tsx src/server.ts",
     "generate-specs": "tsx src/index.ts --openapi > openapi.json"
   },
   "dependencies": {
