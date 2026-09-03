@@ -143,6 +143,9 @@ importers:
 
   apps/website:
     dependencies:
+      '@api/internal':
+        specifier: workspace:*
+        version: link:../internal-api
       '@oslojs/crypto':
         specifier: 'catalog:'
         version: 1.0.1
@@ -179,6 +182,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      hono:
+        specifier: ^4.12.10
+        version: 4.12.21
       kysely:
         specifier: 'catalog:'
         version: 0.29.2
